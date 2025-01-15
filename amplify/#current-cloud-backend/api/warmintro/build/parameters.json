@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "warmintro",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authwarmintro9d099fe2",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "S3DeploymentBucket": "amplify-warmintro-dev-4a509-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/86f558b68a091aa4e9868d13e621870d6c2608c2"
+}

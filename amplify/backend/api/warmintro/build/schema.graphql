@@ -1,0 +1,426 @@
+type Connection {
+  id: ID!
+  companyName: String!
+  contactName: String!
+  linkedinURL: String
+  firstName: String
+  lastName: String
+  email: String
+  position: String
+  connectedOn: String
+  contact: String
+  educationInstitutions: String
+  pastCompanies: String
+  linkedinJSON: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Company {
+  id: ID!
+  companyName: String!
+  companyLinkedInURL: String
+  websiteURL: String
+  industry: String
+  specialties: String
+  employeeCount: String
+  city: String
+  geographicArea: String
+  postalCode: String
+  founded: String
+  tagline: String
+  description: String
+  logoURL: String
+  fullJSON: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelConnectionConnection {
+  items: [Connection]!
+  nextToken: String
+}
+
+input ModelConnectionFilterInput {
+  id: ModelIDInput
+  companyName: ModelStringInput
+  contactName: ModelStringInput
+  linkedinURL: ModelStringInput
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  email: ModelStringInput
+  position: ModelStringInput
+  connectedOn: ModelStringInput
+  contact: ModelStringInput
+  educationInstitutions: ModelStringInput
+  pastCompanies: ModelStringInput
+  linkedinJSON: ModelStringInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelConnectionFilterInput]
+  or: [ModelConnectionFilterInput]
+  not: ModelConnectionFilterInput
+}
+
+type Query {
+  getConnection(id: ID!): Connection
+  listConnections(filter: ModelConnectionFilterInput, limit: Int, nextToken: String): ModelConnectionConnection
+  getCompany(id: ID!): Company
+  listCompanies(filter: ModelCompanyFilterInput, limit: Int, nextToken: String): ModelCompanyConnection
+}
+
+input ModelConnectionConditionInput {
+  companyName: ModelStringInput
+  contactName: ModelStringInput
+  linkedinURL: ModelStringInput
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  email: ModelStringInput
+  position: ModelStringInput
+  connectedOn: ModelStringInput
+  contact: ModelStringInput
+  educationInstitutions: ModelStringInput
+  pastCompanies: ModelStringInput
+  linkedinJSON: ModelStringInput
+  and: [ModelConnectionConditionInput]
+  or: [ModelConnectionConditionInput]
+  not: ModelConnectionConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateConnectionInput {
+  id: ID
+  companyName: String!
+  contactName: String!
+  linkedinURL: String
+  firstName: String
+  lastName: String
+  email: String
+  position: String
+  connectedOn: String
+  contact: String
+  educationInstitutions: String
+  pastCompanies: String
+  linkedinJSON: String
+}
+
+input UpdateConnectionInput {
+  id: ID!
+  companyName: String
+  contactName: String
+  linkedinURL: String
+  firstName: String
+  lastName: String
+  email: String
+  position: String
+  connectedOn: String
+  contact: String
+  educationInstitutions: String
+  pastCompanies: String
+  linkedinJSON: String
+}
+
+input DeleteConnectionInput {
+  id: ID!
+}
+
+type Mutation {
+  createConnection(input: CreateConnectionInput!, condition: ModelConnectionConditionInput): Connection
+  updateConnection(input: UpdateConnectionInput!, condition: ModelConnectionConditionInput): Connection
+  deleteConnection(input: DeleteConnectionInput!, condition: ModelConnectionConditionInput): Connection
+  createCompany(input: CreateCompanyInput!, condition: ModelCompanyConditionInput): Company
+  updateCompany(input: UpdateCompanyInput!, condition: ModelCompanyConditionInput): Company
+  deleteCompany(input: DeleteCompanyInput!, condition: ModelCompanyConditionInput): Company
+}
+
+input ModelSubscriptionConnectionFilterInput {
+  id: ModelSubscriptionIDInput
+  companyName: ModelSubscriptionStringInput
+  contactName: ModelSubscriptionStringInput
+  linkedinURL: ModelSubscriptionStringInput
+  firstName: ModelSubscriptionStringInput
+  lastName: ModelSubscriptionStringInput
+  email: ModelSubscriptionStringInput
+  position: ModelSubscriptionStringInput
+  connectedOn: ModelSubscriptionStringInput
+  contact: ModelSubscriptionStringInput
+  educationInstitutions: ModelSubscriptionStringInput
+  pastCompanies: ModelSubscriptionStringInput
+  linkedinJSON: ModelSubscriptionStringInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionConnectionFilterInput]
+  or: [ModelSubscriptionConnectionFilterInput]
+}
+
+type Subscription {
+  onCreateConnection(filter: ModelSubscriptionConnectionFilterInput): Connection @aws_subscribe(mutations: ["createConnection"])
+  onUpdateConnection(filter: ModelSubscriptionConnectionFilterInput): Connection @aws_subscribe(mutations: ["updateConnection"])
+  onDeleteConnection(filter: ModelSubscriptionConnectionFilterInput): Connection @aws_subscribe(mutations: ["deleteConnection"])
+  onCreateCompany(filter: ModelSubscriptionCompanyFilterInput): Company @aws_subscribe(mutations: ["createCompany"])
+  onUpdateCompany(filter: ModelSubscriptionCompanyFilterInput): Company @aws_subscribe(mutations: ["updateCompany"])
+  onDeleteCompany(filter: ModelSubscriptionCompanyFilterInput): Company @aws_subscribe(mutations: ["deleteCompany"])
+}
+
+type ModelCompanyConnection {
+  items: [Company]!
+  nextToken: String
+}
+
+input ModelCompanyFilterInput {
+  id: ModelIDInput
+  companyName: ModelStringInput
+  companyLinkedInURL: ModelStringInput
+  websiteURL: ModelStringInput
+  industry: ModelStringInput
+  specialties: ModelStringInput
+  employeeCount: ModelStringInput
+  city: ModelStringInput
+  geographicArea: ModelStringInput
+  postalCode: ModelStringInput
+  founded: ModelStringInput
+  tagline: ModelStringInput
+  description: ModelStringInput
+  logoURL: ModelStringInput
+  fullJSON: ModelStringInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelCompanyFilterInput]
+  or: [ModelCompanyFilterInput]
+  not: ModelCompanyFilterInput
+}
+
+input ModelCompanyConditionInput {
+  companyName: ModelStringInput
+  companyLinkedInURL: ModelStringInput
+  websiteURL: ModelStringInput
+  industry: ModelStringInput
+  specialties: ModelStringInput
+  employeeCount: ModelStringInput
+  city: ModelStringInput
+  geographicArea: ModelStringInput
+  postalCode: ModelStringInput
+  founded: ModelStringInput
+  tagline: ModelStringInput
+  description: ModelStringInput
+  logoURL: ModelStringInput
+  fullJSON: ModelStringInput
+  and: [ModelCompanyConditionInput]
+  or: [ModelCompanyConditionInput]
+  not: ModelCompanyConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateCompanyInput {
+  id: ID
+  companyName: String!
+  companyLinkedInURL: String
+  websiteURL: String
+  industry: String
+  specialties: String
+  employeeCount: String
+  city: String
+  geographicArea: String
+  postalCode: String
+  founded: String
+  tagline: String
+  description: String
+  logoURL: String
+  fullJSON: String
+}
+
+input UpdateCompanyInput {
+  id: ID!
+  companyName: String
+  companyLinkedInURL: String
+  websiteURL: String
+  industry: String
+  specialties: String
+  employeeCount: String
+  city: String
+  geographicArea: String
+  postalCode: String
+  founded: String
+  tagline: String
+  description: String
+  logoURL: String
+  fullJSON: String
+}
+
+input DeleteCompanyInput {
+  id: ID!
+}
+
+input ModelSubscriptionCompanyFilterInput {
+  id: ModelSubscriptionIDInput
+  companyName: ModelSubscriptionStringInput
+  companyLinkedInURL: ModelSubscriptionStringInput
+  websiteURL: ModelSubscriptionStringInput
+  industry: ModelSubscriptionStringInput
+  specialties: ModelSubscriptionStringInput
+  employeeCount: ModelSubscriptionStringInput
+  city: ModelSubscriptionStringInput
+  geographicArea: ModelSubscriptionStringInput
+  postalCode: ModelSubscriptionStringInput
+  founded: ModelSubscriptionStringInput
+  tagline: ModelSubscriptionStringInput
+  description: ModelSubscriptionStringInput
+  logoURL: ModelSubscriptionStringInput
+  fullJSON: ModelSubscriptionStringInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionCompanyFilterInput]
+  or: [ModelSubscriptionCompanyFilterInput]
+}

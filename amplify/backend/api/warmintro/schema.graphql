@@ -1,0 +1,33 @@
+type Connection @model {
+  id: ID!
+  companyName: String!
+  contactName: String!
+  linkedinURL: String
+  firstName: String
+  lastName: String
+  email: String
+  position: String
+  connectedOn: String
+  contact: String
+  educationInstitutions: String
+  pastCompanies: String
+  linkedinJSON: String
+}
+
+type Company @model {
+  id: ID!
+  companyName: String!
+  companyLinkedInURL: String
+  websiteURL: String
+  industry: String
+  specialties: String
+  employeeCount: String
+  city: String
+  geographicArea: String
+  postalCode: String
+  founded: String
+  tagline: String
+  description: String
+  logoURL: String
+  fullJSON: String
+}

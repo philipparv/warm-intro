@@ -1,0 +1,7 @@
+{
+  "tableName": "Connections",
+  "partitionKeyName": "CompanyName",
+  "partitionKeyType": "S",
+  "sortKeyName": "ContactName",
+  "sortKeyType": "S"
+}

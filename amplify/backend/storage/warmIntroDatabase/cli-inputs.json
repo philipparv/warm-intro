@@ -1,0 +1,14 @@
+{
+  "resourceName": "warmIntroDatabase",
+  "tableName": "Connections",
+  "partitionKey": {
+    "fieldName": "CompanyName",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "ContactName",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

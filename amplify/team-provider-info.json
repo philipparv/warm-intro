@@ -1,0 +1,27 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-warmintro-dev-4a509-authRole",
+      "UnauthRoleArn": "arn:aws:iam::557690624472:role/amplify-warmintro-dev-4a509-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::557690624472:role/amplify-warmintro-dev-4a509-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-warmintro-dev-4a509-deployment",
+      "UnauthRoleName": "amplify-warmintro-dev-4a509-unauthRole",
+      "StackName": "amplify-warmintro-dev-4a509",
+      "StackId": "arn:aws:cloudformation:us-east-2:557690624472:stack/amplify-warmintro-dev-4a509/04031bb0-d2b9-11ef-908d-0a8cefc6bd3b",
+      "AmplifyAppId": "d23kibdy74kgiw"
+    },
+    "categories": {
+      "storage": {
+        "warmIntroDatabase": {},
+        "companiesDatabase": {}
+      },
+      "auth": {
+        "warmintro9d099fe2": {}
+      },
+      "api": {
+        "warmintro": {}
+      }
+    }
+  }
+}

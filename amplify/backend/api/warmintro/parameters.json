@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "warmintro",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authwarmintro9d099fe2",
+      "Outputs.UserPoolId"
+    ]
+  }
+}

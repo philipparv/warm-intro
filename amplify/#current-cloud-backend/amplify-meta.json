@@ -1,0 +1,132 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-warmintro-dev-4a509-authRole",
+      "UnauthRoleArn": "arn:aws:iam::557690624472:role/amplify-warmintro-dev-4a509-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::557690624472:role/amplify-warmintro-dev-4a509-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-warmintro-dev-4a509-deployment",
+      "UnauthRoleName": "amplify-warmintro-dev-4a509-unauthRole",
+      "StackName": "amplify-warmintro-dev-4a509",
+      "StackId": "arn:aws:cloudformation:us-east-2:557690624472:stack/amplify-warmintro-dev-4a509/04031bb0-d2b9-11ef-908d-0a8cefc6bd3b",
+      "AmplifyAppId": "d23kibdy74kgiw"
+    }
+  },
+  "storage": {
+    "warmIntroDatabase": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-warmintro-dev-4a509-deployment/amplify-cfn-templates/storage/warmIntroDatabase-cloudformation-template.json",
+        "logicalId": "storagewarmIntroDatabase"
+      },
+      "lastPushTimeStamp": "2025-01-14T21:53:31.011Z",
+      "output": {
+        "PartitionKeyName": "CompanyName",
+        "SortKeyName": "ContactName",
+        "SortKeyType": "S",
+        "Region": "us-east-2",
+        "Arn": "arn:aws:dynamodb:us-east-2:557690624472:table/Connections-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-2:557690624472:table/Connections-dev/stream/2025-01-14T21:01:27.597",
+        "PartitionKeyType": "S",
+        "Name": "Connections-dev"
+      },
+      "lastPushDirHash": "Vxd/uoCOyidmph7wDI88WC6ZgMQ="
+    },
+    "companiesDatabase": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-warmintro-dev-4a509-deployment/amplify-cfn-templates/storage/companiesDatabase-cloudformation-template.json",
+        "logicalId": "storagecompaniesDatabase"
+      },
+      "lastPushTimeStamp": "2025-01-14T21:53:31.013Z",
+      "output": {
+        "PartitionKeyName": "CompanyName",
+        "Region": "us-east-2",
+        "Arn": "arn:aws:dynamodb:us-east-2:557690624472:table/Companies-dev",
+        "StreamArn": "arn:aws:dynamodb:us-east-2:557690624472:table/Companies-dev/stream/2025-01-14T21:01:27.438",
+        "PartitionKeyType": "S",
+        "Name": "Companies-dev"
+      },
+      "lastPushDirHash": "9YR8TV085DvDdK/W/WeqNtTD5t0="
+    }
+  },
+  "auth": {
+    "warmintro9d099fe2": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-warmintro-dev-4a509-deployment/amplify-cfn-templates/auth/warmintro9d099fe2-cloudformation-template.json",
+        "logicalId": "authwarmintro9d099fe2"
+      },
+      "lastPushTimeStamp": "2025-01-14T21:53:32.028Z",
+      "output": {
+        "UserPoolId": "us-east-2_RoXBD3V8S",
+        "AppClientIDWeb": "3t08itcrktol0tdp0i8n8c48vt",
+        "AppClientID": "2nv5uh3v6frndfs90uvgn9rs1m",
+        "IdentityPoolId": "us-east-2:d254b6f1-a38e-4cd6-9545-921c83994ede",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-2:557690624472:userpool/us-east-2_RoXBD3V8S",
+        "IdentityPoolName": "warmintro9d099fe2_identitypool_9d099fe2__dev",
+        "UserPoolName": "warmintro9d099fe2_userpool_9d099fe2"
+      },
+      "lastPushDirHash": "H4uKyQofmQIj6CBH0m+ixFvBwvM="
+    }
+  },
+  "api": {
+    "warmintro": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "warmintro9d099fe2",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authwarmintro9d099fe2"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "bagkbtj54rfy5ek2kz6xlsrm3u",
+        "GraphQLAPIEndpointOutput": "https://z5vxxeksdfagtjlzsswrcaapma.appsync-api.us-east-2.amazonaws.com/graphql"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-warmintro-dev-4a509-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apiwarmintro"
+      },
+      "lastPushTimeStamp": "2025-01-14T21:53:32.028Z",
+      "lastPushDirHash": "PAOpAIT8NlRqmr9rg17VHjQ6C3E="
+    }
+  }
+}

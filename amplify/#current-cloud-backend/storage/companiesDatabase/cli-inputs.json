@@ -1,0 +1,10 @@
+{
+  "resourceName": "companiesDatabase",
+  "tableName": "Companies",
+  "partitionKey": {
+    "fieldName": "CompanyName",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
